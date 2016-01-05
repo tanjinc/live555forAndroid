@@ -1,5 +1,6 @@
 package com.tanjinc.live555android;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.design.widget.FloatingActionButton;
 import android.support.design.widget.Snackbar;
@@ -39,12 +40,16 @@ public class MainActivity extends AppCompatActivity {
         btn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                boolean ret = nativeMethod.startRTSPServer2();
-                mTextView.setText("RTSPServer start " + ret);
+                startRtspService();
             }
         });
     }
 
+    private void startRtspService() {
+        Intent intent = new Intent(this, RTSPService.class);
+        intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TOP);
+        startService(intent);
+    }
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
         // Inflate the menu; this adds items to the action bar if it is present.

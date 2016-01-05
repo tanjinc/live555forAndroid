@@ -48,8 +48,8 @@ jint native_startRTSPServer(JNIEnv *env, jobject thiz) {
 
 
 static JNINativeMethod methods[] = {
-        {"stringFromJNI", "()Ljava/lang/String;", (void*)native_stringFromJNI},
-        {"startRTSPServer", "()I", (void*)native_startRTSPServer},
+        {"stringFromJNI", "()Ljava/lang/String;",   (void*)native_stringFromJNI},
+        {"startRTSPServer", "()I",                  (void*)native_startRTSPServer},
 };
 
 jint JNI_OnLoad(JavaVM* vm, void* reserved)

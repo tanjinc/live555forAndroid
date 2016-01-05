@@ -28,6 +28,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include <string.h>
 #include <jni.h>
 #include <android/log.h>
+#define LOGE(...) __android_log_print(ANDROID_LOG_INFO , "BasicUsageEnvironment", __VA_ARGS__)
 #endif
 
 class BasicUsageEnvironment: public BasicUsageEnvironment0 {

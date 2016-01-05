@@ -20,9 +20,7 @@ along with this library; if not, write to the Free Software Foundation, Inc.,
 #include "BasicUsageEnvironment.hh"
 #include <stdio.h>
 
-#ifdef ANDROID
-#define LOGE(...) __android_log_print(ANDROID_LOG_INFO , "BasicUsageEnvironment", __VA_ARGS__)
-#endif
+
 ////////// BasicUsageEnvironment //////////
 
 #if defined(__WIN32__) || defined(_WIN32)

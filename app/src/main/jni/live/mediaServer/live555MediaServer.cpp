@@ -34,6 +34,8 @@ UsageEnvironment* env;
 void *taskthread(void*) {
   *env << "Create pthread \n";
   env->taskScheduler().doEventLoop(); // does not return
+
+
 }
 
 //int main(int argc, char** argv) {

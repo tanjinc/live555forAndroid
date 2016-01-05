@@ -89,6 +89,10 @@ void BasicTaskScheduler::SingleStep(unsigned maxDelayTime) {
 
   int selectResult = select(fMaxNumSockets, &readSet, &writeSet, &exceptionSet, &tv_timeToDelay);
   if (selectResult < 0) {
+
+#if defined(ANDROID) 
+    LOGE("BasicTaskScheduler::SingleStep(): select() fails");
+#endif
 #if defined(__WIN32__) || defined(_WIN32)
     int err = WSAGetLastError();
     // For some unknown reason, select() in Windoze sometimes fails with WSAEINVAL if

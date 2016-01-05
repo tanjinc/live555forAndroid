@@ -14,9 +14,9 @@
 #define LOGW(...) __android_log_print(ANDROID_LOG_WARN , TAG2, __VA_ARGS__)
 #define LOGE(...) __android_log_print(ANDROID_LOG_ERROR , TAG2, __VA_ARGS__)
 
-void* taskthread(void *env) {
-    ((BasicUsageEnvironment*)env)->taskScheduler().doEventLoop();
-}
+//void* taskthread(void *env) {
+//    ((BasicUsageEnvironment*)env)->taskScheduler().doEventLoop();
+//}
 
 int startRTSPServer2() {
     const char *fileName = "test.mp4";
@@ -33,13 +33,15 @@ int startRTSPServer2() {
     sms->addSubsession(MPEG4VideoFileServerMediaSubsession::createNew(*env, fileName, false));
 
     //3.为RTSPServer添加session
-    rtspServer->addServerMediaSession(sms);
-    pthread_t id;
-    int ret = pthread_create(&id, NULL, taskthread, env);
-    if(ret) {
-        *env << "Create pthread error!\n";
-        return -1;
-    }
-    pthread_join(id, NULL);
+//    rtspServer->addServerMediaSession(sms);
+//    pthread_t id;
+//    int ret = pthread_create(&id, NULL, taskthread, env);
+//    if(ret) {
+//        *env << "Create pthread error!\n";
+//        return -1;
+//    }
+//    pthread_join(id, NULL);
+
+    env->taskScheduler().doEventLoop();
     return 1;
 }
