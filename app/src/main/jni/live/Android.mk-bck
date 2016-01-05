@@ -1,0 +1,31 @@
+LOCAL_PATH := $(call my-dir)
+
+include $(CLEAR_VARS)
+
+LOCAL_MODULE := live555
+
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/groupsock/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/groupsock/*.c)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/liveMedia/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/liveMedia/*.c)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/BasicUsageEnvironment/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/BasicUsageEnvironment/*.c)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/UsageEnvironment/*.cpp)
+MY_CPP_LIST += $(wildcard $(LOCAL_PATH)/live/UsageEnvironment/*.c)
+
+
+
+$(warning $(MY_CPP_LIST))
+LOCAL_SRC_FILES := $(MY_CPP_LIST:$(LOCAL_PATH)/%=%)
+
+
+LOCAL_C_INCLUDES := \
+./live/BasicUsageEnvironment/include \
+./live/liveMedia/include \
+./live/BasicUsageEnvironment/include \
+./live/groupsock/include \
+./live/UsageEnvironment/include
+
+LOCAL_CPPFLAGS += -fexceptions -DXLOCALE_NOT_USED=1 -DNULL=0 -DNO_SSTREAM=1 -UIP_ADD_SOURCE_MEMBERSHIP
+
+include $(BUILD_SHARED_LIBRARY)
